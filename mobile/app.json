@@ -28,15 +28,24 @@
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
-        "NOTIFICATIONS"
+        "NOTIFICATIONS",
+        "VIBRATE",
+        "INTERNET"
       ],
-      "package": "com.fardheen_m.resq"
+      "package": "com.fardheen_m.resq",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDummyKeyForMapsInitialization_ResQ"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-location",
+      "expo-notifications"
     ],
     "extra": {
       "eas": {
