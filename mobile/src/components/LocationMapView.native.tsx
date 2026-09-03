@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { View, StyleSheet, Text, Platform } from 'react-native';
+import MapView, { Marker, UrlTile } from 'react-native-maps';
 import { COLORS, RADIUS } from '../utils/theme';
 
 interface LocationMapViewProps {
@@ -36,7 +36,13 @@ export const LocationMapView: React.FC<LocationMapViewProps> = ({
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
+        mapType={Platform.OS === 'android' ? 'none' : 'standard'}
       >
+        <UrlTile
+          urlTemplate="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          maximumZ={19}
+          flipY={false}
+        />
         <Marker
           coordinate={{ latitude, longitude }}
           title={title}
