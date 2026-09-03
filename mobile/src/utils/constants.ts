@@ -8,21 +8,18 @@ const getHostIp = () => {
   const rawHost = Constants.expoConfig?.hostUri || Constants.experienceUrl || '';
   const cleanHost = rawHost.replace(/^[a-z]+:\/\//i, '');
   const ip = cleanHost.split(':')[0];
-  return ip && ip !== 'http' && ip !== 'https' ? ip : 'localhost';
+  if (!ip || ip === 'localhost' || ip === 'http' || ip === 'https' || ip === '127.0.0.1') {
+    return '10.166.21.234';
+  }
+  return ip;
 };
 
 const hostIp = getHostIp();
 
-// In development mode (__DEV__), use the local server running on port 5000
-const USE_LOCAL_SERVER = __DEV__;
+const SERVER_URL = `http://${hostIp}:5000`;
 
-export const API_BASE_URL = USE_LOCAL_SERVER
-  ? `http://${hostIp}:5000/api`
-  : `https://resq-server.onrender.com/api`;
-
-export const SOCKET_URL = USE_LOCAL_SERVER
-  ? `http://${hostIp}:5000`
-  : `https://resq-server.onrender.com`;
+export const API_BASE_URL = `${SERVER_URL}/api`;
+export const SOCKET_URL = SERVER_URL;
 
 export const EMERGENCY_NUMBERS = [
   { country: 'United States / Canada', number: '911' },
