@@ -16,10 +16,17 @@ const getHostIp = () => {
 
 const hostIp = getHostIp();
 
-const SERVER_URL = `http://${hostIp}:5000`;
+// Set to true when your Render backend is deployed and active
+// Set to false when testing against your local laptop backend server
+const USE_RENDER_BACKEND = true;
 
-export const API_BASE_URL = `${SERVER_URL}/api`;
-export const SOCKET_URL = SERVER_URL;
+const RENDER_URL = 'https://resq-server.onrender.com';
+const LOCAL_URL = `http://${hostIp}:5000`;
+
+const BASE_URL = USE_RENDER_BACKEND ? RENDER_URL : LOCAL_URL;
+
+export const API_BASE_URL = `${BASE_URL}/api`;
+export const SOCKET_URL = BASE_URL;
 
 export const EMERGENCY_NUMBERS = [
   { country: 'United States / Canada', number: '911' },
