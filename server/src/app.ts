@@ -27,7 +27,7 @@ NotificationService.init(io);
 setupSocketHandlers(io);
 
 // Security and utility middleware
-app.use(helmet());
+app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));

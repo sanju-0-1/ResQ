@@ -13,8 +13,16 @@ const getHostIp = () => {
 
 const hostIp = getHostIp();
 
-export const API_BASE_URL = `http://${hostIp}:5000/api`;
-export const SOCKET_URL = `http://${hostIp}:5000`;
+// In development mode (__DEV__), use the local server running on port 5000
+const USE_LOCAL_SERVER = __DEV__;
+
+export const API_BASE_URL = USE_LOCAL_SERVER
+  ? `http://${hostIp}:5000/api`
+  : `https://resq-server.onrender.com/api`;
+
+export const SOCKET_URL = USE_LOCAL_SERVER
+  ? `http://${hostIp}:5000`
+  : `https://resq-server.onrender.com`;
 
 export const EMERGENCY_NUMBERS = [
   { country: 'United States / Canada', number: '911' },

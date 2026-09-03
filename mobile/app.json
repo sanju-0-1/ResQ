@@ -29,13 +29,19 @@
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
         "NOTIFICATIONS"
-      ]
+      ],
+      "package": "com.fardheen_m.resq"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-secure-store"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9d4c19e9-5b37-4a6f-ad36-5eec494a5fb9"
+      }
+    }
   }
 }
