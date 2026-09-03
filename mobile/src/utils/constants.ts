@@ -20,7 +20,7 @@ const hostIp = getHostIp();
 // Set to false when testing against your local laptop backend server
 const USE_RENDER_BACKEND = true;
 
-const RENDER_URL = 'https://resq-server.onrender.com';
+const RENDER_URL = 'https://resq-zrri.onrender.com';
 const LOCAL_URL = `http://${hostIp}:5000`;
 
 const BASE_URL = USE_RENDER_BACKEND ? RENDER_URL : LOCAL_URL;
